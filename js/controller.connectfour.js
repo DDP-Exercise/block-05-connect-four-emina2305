@@ -37,7 +37,7 @@
  *
  *     The creation of this game should take you somewhere between
  *     8-10 hours of concentrated work.
- *     Bratlsoft - 2026-04-29
+ *     Emina Abazovic - 2026-05-12
  *******************************************************/
 
 
@@ -45,3 +45,37 @@
 //      the view (or views, if you decide to make a console-view).
 
 //TODO: Add EventListeners, to forward the user inputs to the model.
+
+const ConnectFourController = {
+    init() {
+        ConnectFourPolishedView.init(ConnectFourModel);
+        ConnectFourConsoleView.init(ConnectFourModel);
+        this.bindViewEvents();
+    },
+
+    bindViewEvents() {
+        document.addEventListener(ConnectFourPolishedView.events.characterSelected, (event) => {
+            const { playerIndex, character } = event.detail;
+            ConnectFourPolishedView.selectCharacter(playerIndex, character);
+
+            if (ConnectFourPolishedView.pickedCharacters[0] !== null && ConnectFourPolishedView.pickedCharacters[1] !== null) {
+                ConnectFourModel.setPlayers(
+                    ConnectFourPolishedView.pickedCharacters[0],
+                    ConnectFourPolishedView.pickedCharacters[1]
+                );
+            }
+        });
+
+        document.addEventListener(ConnectFourPolishedView.events.columnSelected, (event) => {
+            ConnectFourModel.insertStone(event.detail.column);
+        });
+
+        document.addEventListener(ConnectFourPolishedView.events.restartRequested, () => {
+            ConnectFourPolishedView.resetSelection();
+        });
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    ConnectFourController.init();
+});
