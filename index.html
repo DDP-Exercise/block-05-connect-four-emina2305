@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Connect Four</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/model.connectfour.js"></script>
+    <script defer src="js/view.console.js"></script>
+    <script defer src="js/view.polished.js"></script>
+    <script defer src="js/controller.connectfour.js"></script>
 </head>
 <body>
     <!--TODO: Build the Markup for your Game. Don't forget to style it in a cascading stylesheet. -->
 
+    <main class="app-shell">
+        <section class="hero-panel">
+            <h1>Looney Connect Four </h1>
+        </section>
+
+        <section id="characterSelection" class="character-selection" aria-label="Character selection">
+            <div class="selection-card">
+                <p id="selectionStep" class="selection-step">Player 1, pick your character</p>
+
+                <div id="characterGridTop" class="character-grid character-grid-top"></div>
+                <div id="characterGridBottom" class="character-grid character-grid-bottom"></div>
+            </div>
+        </section>
+
+        <section id="gameArea" class="game-area is-hidden" aria-label="Connect Four game area">
+            <aside class="player-panel player-one-panel">
+                <p class="player-label">Player 1</p>
+                <div class="character-frame blue-frame">
+                    <img id="playerOneCharacter" alt="Player 1 character">
+                </div>
+                <p id="playerOneName" class="character-name"></p>
+            </aside>
+
+            <section class="board-stage">
+                <div id="statusBar" class="status-bar">Choose your characters to start.</div>
+
+                <div class="board-wrap">
+                    <img class="board-image" src="images/connect4board.png" alt="Connect Four board">
+
+                    <div id="coinGrid" class="coin-grid" aria-label="Playing field"></div>
+                    <div id="columnControls" class="column-controls" aria-label="Column controls"></div>
+                </div>
+
+                <button id="restartButton" class="restart-button" type="button">Restart Game</button>
+            </section>
+
+            <aside class="player-panel player-two-panel">
+                <p class="player-label">Player 2</p>
+                <div class="character-frame red-frame">
+                    <img id="playerTwoCharacter" alt="Player 2 character">
+                </div>
+                <p id="playerTwoName" class="character-name"></p>
+            </aside>
+        </section>
+    </main>
 </body>
 </html>
