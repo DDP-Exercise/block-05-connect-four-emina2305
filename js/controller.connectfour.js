@@ -37,7 +37,7 @@
  *
  *     The creation of this game should take you somewhere between
  *     8-10 hours of concentrated work.
- *     Bratlsoft - 2026-04-29
+ *     Emina Abazovic - 2026-05-12
  *******************************************************/
 
 
